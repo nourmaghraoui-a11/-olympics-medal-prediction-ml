@@ -162,7 +162,7 @@ Olympic-Medal-Prediction/
 ## Author
 
 **Maghraoui Nour**  
-Big Data & Artificial Intelligence Student
+Big Data & Data Analysis Student
 
 
 
@@ -320,4 +320,5 @@ Big Data & Artificial Intelligence Student
 
 
 </p>
+
 
