@@ -1,184 +1,152 @@
-🏅 Olympic Medal Prediction
-Data Cleaning • Exploratory Data Analysis • Machine Learning
-<p align="center">
-📌 Project Overview
+# Olympic Medal Prediction
 
-This project focuses on:
+A comprehensive data science project analyzing Olympic athlete data to predict medal performance using machine learning classification techniques.
 
-✔ Data Cleaning & Preprocessing
-✔ Exploratory Data Analysis (EDA)
-✔ Feature Engineering
-✔ Machine Learning Classification
+---
 
-The objective is to predict whether an athlete will win a medal or not based on demographic and competition features.
+## Project Overview
 
-Dataset source:
-🔗 Kaggle – Olympic Athlete Events Dataset
+This project demonstrates a complete data science pipeline including data preprocessing, exploratory analysis, feature engineering, and predictive modeling. The objective is to classify whether an Olympic athlete will win a medal based on demographic and competition characteristics.
 
-📂 Dataset Description
+**Key Components:**
+- Data Cleaning & Preprocessing
+- Exploratory Data Analysis (EDA)
+- Feature Engineering
+- Machine Learning Classification
 
-The dataset contains historical data about Olympic athletes, including:
+**Data Source:** [Kaggle – Olympic Athlete Events Dataset](https://www.kaggle.com/datasets/heesoo37/olympic-history-data-1896-2016)
 
-Feature	Description
-Age	Athlete age
-Sex	Male / Female
-Height	Height (cm)
-Weight	Weight (kg)
-Sport	Sport category
-NOC	Country code
-Year	Olympic year
-Medal	Gold / Silver / Bronze / No medal
-🧹 Data Cleaning & Preparation
-🔹 1. Removing Duplicates
+---
 
-Checked duplicate rows across all columns
+## Dataset Description
 
-Dropped duplicates
+The dataset contains historical Olympic athlete information with the following features:
 
-🔹 2. Handling Missing Values
+| Feature | Description |
+|---------|---|
+| **Age** | Athlete age |
+| **Sex** | Male / Female |
+| **Height** | Height (cm) |
+| **Weight** | Weight (kg) |
+| **Sport** | Sport category |
+| **NOC** | Country code |
+| **Year** | Olympic year |
+| **Medal** | Gold / Silver / Bronze / No medal |
 
-Replaced missing Height and Weight with median
+---
 
-Replaced missing Medal with "No medal"
+## Data Cleaning & Preprocessing
 
-🔹 3. Feature Engineering
+### 1. Duplicate Removal
+- Identified and removed duplicate entries across all columns
 
-Created a new feature:
+### 2. Missing Value Handling
+- Imputed missing Height and Weight values using median strategy
+- Replaced missing Medal entries with "No medal" category
 
-📌 BMI (IMC)
-𝐵
-𝑀
-𝐼
-=
-𝑊
-𝑒
-𝑖
-𝑔
-ℎ
-𝑡
-(
-𝐻
-𝑒
-𝑖
-𝑔
-ℎ
-𝑡
-/
-100
-)
-2
-BMI=
-(Height/100)
-2
-Weight
-	​
+### 3. Feature Engineering
+Created BMI (Body Mass Index) feature:
+$$BMI = \frac{\text{Weight}}{(\text{Height}/100)^2}$$
 
+Removed Height and Weight columns to reduce multicollinearity.
 
-Then removed Height and Weight to reduce redundancy.
+### 4. Column Removal
+- Dropped redundant columns: Games, Team
 
-🔹 4. Dropped Unnecessary Columns
+### 5. Data Organization
+- Sorted dataset by Age and Year
+- Reset index for proper sequencing
 
-Games
+---
 
-Team
+## Exploratory Data Analysis
 
-🔹 5. Sorting & Resetting Index
+### Medal Distribution by Sex
+Analyzed medal achievement rates across male and female athletes using comparative visualization.
 
-Sorted by Age and Year.
+### BMI Analysis by Medal Category
+Examined BMI distribution across medal classes (Gold, Silver, Bronze) using boxplot analysis.
 
-📊 Exploratory Data Analysis
-📈 1️⃣ Medal Percentage by Sex
+### Performance by Country
+Identified top 20 countries by total medal count and NOC distribution.
 
-Bar chart showing medal distribution between male and female athletes.
+---
 
-📈 2️⃣ BMI Distribution by Medal Type
+## Machine Learning Model
 
-Boxplot comparing BMI across:
-
-🥇 Gold
-
-🥈 Silver
-
-🥉 Bronze
-
-📈 3️⃣ Top 20 Countries by Medal Count
-
-Grouped by NOC.
-
-🤖 Machine Learning Model
-🎯 Target Variable
+### Target Variable
+```python
 df['HasMedal'] = (df['Medal'].isin(['Gold','Silver','Bronze'])).astype(int)
+```
+- **1** = Athlete won a medal
+- **0** = Athlete did not win a medal
 
-1 → Won a medal
+### Model Specifications
+- **Algorithm:** Logistic Regression
+- **Encoding:** OneHot Encoding for categorical features
+- **Data Split:** 80% training / 20% testing
+- **Framework:** Scikit-Learn Pipeline
 
-0 → No medal
+### Features Used
+- Age
+- BMI
+- Sex
+- Sport
+- NOC (National Olympic Committee)
 
-🧠 Model Used
+### Model Evaluation
+The model accuracy is calculated using:
+```python
+accuracy = model.score(X_test, y_test)
+```
 
-✔ Logistic Regression
-✔ OneHot Encoding for categorical features
-✔ Train/Test Split (80/20)
-✔ Scikit-Learn Pipeline
+---
 
-Features Used:
+## Technology Stack
 
-Age
+| Technology | Purpose |
+|---|---|
+| **Python** | Programming language |
+| **Pandas** | Data manipulation and analysis |
+| **NumPy** | Numerical computing |
+| **Matplotlib** | Data visualization |
+| **Seaborn** | Statistical visualization |
+| **Scikit-learn** | Machine learning modeling |
 
-BMI
+---
 
-Sex
+## Project Structure
 
-Sport
+```
+Olympic-Medal-Prediction/
+├── amazon_sales_dataset.csv
+├── Olympic Athletes Data Cleaning And Analysis.ipynb
+└── README.md
+```
 
-NOC
+---
 
-📊 Model Performance
-print("Accuracy :", model.score(X_test, y_test))
+## Future Enhancements
 
-The model outputs an accuracy score representing prediction performance.
+- Incorporate additional temporal features (Season, Event type)
+- Implement class imbalance handling techniques
+- Evaluate advanced algorithms (Random Forest, XGBoost, Gradient Boosting)
+- Perform cross-validation analysis
+- Deploy as interactive web application
 
-🛠 Tech Stack
-Tool	Purpose
-Python	Programming
-Pandas	Data manipulation
-NumPy	Numerical operations
-Matplotlib	Visualization
-Seaborn	Statistical plots
-Scikit-learn	Machine Learning
-📁 Project Structure
-📦 Olympic-Medal-Prediction
- ┣ 📜 athlete_events.csv
- ┣ 📓 notebook.ipynb
- ┣ 📄 README.md
- ┗ 📁 images/
-🚀 Future Improvements
+## Possible Extensions
 
-Add more features (Year, Event, Season)
+- Create interactive dashboard using Streamlit
+- Conduct historical analysis across different Olympic eras
+- Perform clustering analysis on athlete characteristics
+- Build predictive model for medal type (Gold vs Silver vs Bronze)
 
-Handle class imbalance
+---
 
-Try advanced models (Random Forest, XGBoost)
+## Author
 
-Add cross-validation
-
-Deploy as a web app
-
-📊 Possible Extension
-
-You can extend this project by:
-
-Creating an interactive dashboard (Streamlit)
-
-Comparing medal prediction across different Olympic eras
-
-Adding clustering analysis
-
-👩‍💻 Author
-
-Maghraoui Nour
-🎓 Big Data & Artificial Intelligence Student
-
-⭐ If you like this project, feel free to give it a star on GitHub!
+**Maghraoui Nour**  
+Big Data & Artificial Intelligence Student
 
 
 
