@@ -30,7 +30,7 @@ This project demonstrates a complete data science pipeline including data prepro
 - Feature Engineering
 - Machine Learning Classification
 
-**Data Source:** [Kaggle – Olympic Athlete Events Dataset](https://www.kaggle.com/datasets/heesoo37/olympic-history-data-1896-2016)
+**Data Source:** [Kaggle – Olympic Athlete Events Dataset](https://www.kaggle.com/datasets/abdullahmeo/120-years-of-olympic-athletes-dataset)
 
 ---
 
@@ -320,3 +320,4 @@ Big Data & Artificial Intelligence Student
 
 
 </p>
+
